@@ -11,6 +11,7 @@ import react from "eslint-plugin-react";
 export default tseslint.config(
   { ignores: ["dist"] },
   {
+    settings: { react: { version: "18.3" } },
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
@@ -42,6 +43,8 @@ export default tseslint.config(
       // added for production development
       ...react.configs.recommended.rules,
       ...react.configs["jsx-runtime"].rules,
+      // my personal setup
+      "@typescript-eslint/no-unused-vars": ["warn"],
     },
   },
 );
