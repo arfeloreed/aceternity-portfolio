@@ -1,5 +1,9 @@
 import { ThemeProvider } from "./components/ThemeProvider";
+import { FloatingNav } from "./components/ui/FloatingNav";
 import Hero from "./components/Hero";
+import Grid from "./components/Grid";
+
+import { navItems } from "./variables";
 
 const App = () => {
   return (
@@ -13,7 +17,9 @@ const App = () => {
         className="relative mx-auto flex flex-col items-center justify-center overflow-hidden
           bg-black-100 px-5 sm:px-10"
       >
+        <FloatingNav navItems={navItems} />
         <Hero />
+        <Grid />
       </main>
     </ThemeProvider>
   );
