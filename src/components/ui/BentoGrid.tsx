@@ -1,6 +1,13 @@
+import { useState } from "react";
+import Lottie from "react-lottie";
+import { IoCopyOutline } from "react-icons/io5";
+// lib
 import { cn } from "../../lib/utils";
+import animationData from "../../lib/confetti.json";
+// components
 import { BackgroundGradientAnimation } from "./BgGradient";
 import GridGlobe from "./GridGlobe";
+import MagicButton from "./MagicButton";
 
 export const BentoGrid = ({
   className,
@@ -12,7 +19,6 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        // "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
         `md:grid-row-7 mx-auto grid grid-cols-1 gap-4 md:grid-cols-6 lg:grid-cols-5
         lg:gap-8`,
         className,
@@ -44,6 +50,30 @@ export const BentoGridItem = ({
 }) => {
   const leftLists = ["ReactJS", "Express", "Typescript"];
   const rightLists = ["NodeJS", "PostgreSQL", "Python"];
+  const [copied, setCopied] = useState(false);
+  // control the state of animation for lotte
+  const [animationStopped, setAnimationStopped] = useState(true);
+  const defaultOptions = {
+    loop: false, // set to manual control
+    autoplay: false,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const handleCopy = () => {
+    const text = "torralbaarfeloreed@gmail.com";
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setAnimationStopped(false);
+
+    // reset the copy function and animation for email after 5s
+    setTimeout(() => {
+      setCopied(false);
+      setAnimationStopped(true);
+    }, 5000);
+  };
 
   return (
     <div
@@ -84,7 +114,6 @@ export const BentoGridItem = ({
         </div>
 
         {id === 6 && (
-          // add background animation , remove the p tag
           <BackgroundGradientAnimation>
             <div
               className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center px-4
@@ -140,6 +169,29 @@ export const BentoGridItem = ({
                   </span>
                 ))}
               </div>
+            </div>
+          )}
+
+          {id === 6 && (
+            <div className="relative mt-5">
+              <div
+                className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"}`}
+              >
+                <Lottie
+                  options={defaultOptions}
+                  height={200}
+                  width={400}
+                  isStopped={animationStopped}
+                />
+              </div>
+
+              <MagicButton
+                title={copied ? "Email is Copied!" : "Copy my email address"}
+                icon={<IoCopyOutline />}
+                position="left"
+                handleClick={handleCopy}
+                otherClasses="!bg-[#161A31]"
+              />
             </div>
           )}
         </div>

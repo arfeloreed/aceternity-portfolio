@@ -1,7 +1,10 @@
 import { ThemeProvider } from "./components/ThemeProvider";
 import { FloatingNav } from "./components/ui/FloatingNav";
+
 import Hero from "./components/Hero";
 import Grid from "./components/Grid";
+import Projects from "./components/Projects";
+import Clients from "./components/Clients";
 
 import { navItems } from "./variables";
 
@@ -20,6 +23,8 @@ const App = () => {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
+        <Projects />
+        <Clients />
       </main>
     </ThemeProvider>
   );
