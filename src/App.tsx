@@ -5,6 +5,8 @@ import Hero from "./components/Hero";
 import Grid from "./components/Grid";
 import Projects from "./components/Projects";
 import Clients from "./components/Clients";
+import Experience from "./components/Experience";
+import Approach from "./components/Approach";
 
 import { navItems } from "./variables";
 
@@ -25,6 +27,8 @@ const App = () => {
         <Grid />
         <Projects />
         <Clients />
+        <Experience />
+        <Approach />
       </main>
     </ThemeProvider>
   );
