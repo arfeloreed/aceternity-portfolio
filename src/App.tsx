@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Clients from "./components/Clients";
 import Experience from "./components/Experience";
 import Approach from "./components/Approach";
+import Footer from "./components/Footer";
 
 import { navItems } from "./variables";
 
@@ -19,7 +20,7 @@ const App = () => {
       disableTransitionOnChange
     >
       <main
-        className="relative mx-auto flex flex-col items-center justify-center overflow-hidden
+        className="relative mx-auto flex flex-col items-center justify-center overflow-clip
           bg-black-100 px-5 sm:px-10"
       >
         <FloatingNav navItems={navItems} />
@@ -29,6 +30,7 @@ const App = () => {
         <Clients />
         <Experience />
         <Approach />
+        <Footer />
       </main>
     </ThemeProvider>
   );
